@@ -11,13 +11,14 @@ const useResMenu = (resId) => {
 
     const fetchResMenu = async () => {
         if (ResNewLat && ResNewLng) {
-            const data = await fetch(`${ResMenuFtechurl}page-type=REGULAR_MENU&complete-menu=true&lat=${ResNewLat}&lng=${ResNewLng}&restaurantId=${resId}&submitAction=CONFI`)
-            const json = await data.json()
+             const data = await fetch(
+      `${ResMenuFtechurl}page-type=REGULAR_MENU&complete-menu=true&lat=${ResNewLat}&lng=${ResNewLng}&restaurantId=${resId}&submitAction=ENTER`
+    ); const json = await data.json()
             const ResMenuCard12 = json?.data?.cards?.[2]?.card?.card?.info
             setResMenu12(ResMenuCard12)
             const ResMenuCard3 = json?.data?.cards?.[3]?.card?.card?.gridElements?.infoWithStyle?.offers
             setResMenu3(ResMenuCard3)
-            const ResMenuCard4 = json?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+            const ResMenuCard4 = json?.data?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards
             setResMenu4(ResMenuCard4)
             setLoader(false)
         }
